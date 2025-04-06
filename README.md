@@ -1,70 +1,162 @@
-# Getting Started with Create React App
+# Leaderboard UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive and feature-rich leaderboard user interface built with React and Bootstrap. This component displays user rankings with special emphasis on top performers and pagination for efficient navigation.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- 📊 Display of top 3 users with special styling
+- 🏆 Support for up to 100 ranked users
+- 📱 Fully responsive design for both desktop and mobile
+- 📄 Pagination system (20 users per page)
+- 🔢 "Sticky" top 3 ranks that remain visible across all pages
+- 🎭 Support for anonymous "Mystery" users
+- 🔄 Daily/Monthly toggle for different time periods
+- 🧩 Multiple ranking category tabs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[View Live Demo](#) - Coming soon
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/leaderboard-ui.git
+cd leaderboard-ui
+```
 
-### `npm run build`
+2. Install dependencies:
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Start the development server:
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Basic Implementation
 
-### `npm run eject`
+```jsx
+import React from 'react';
+import Leaderboard from './components/Leaderboard';
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+function App() {
+  return (
+    <div className="App">
+      <Leaderboard />
+    </div>
+  );
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default App;
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Using with Custom Data
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The Leaderboard component can be customized to use your own data source:
 
-## Learn More
+```jsx
+import React from 'react';
+import Leaderboard from './components/Leaderboard';
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function App() {
+  // Your custom user data
+  const userData = [
+    { id: 1, name: 'Champion Player', points: 9500, avatar: '/avatars/1.jpg' },
+    { id: 2, name: 'Mystery billionaire', points: 9000, avatar: '/avatars/2.jpg', isMystery: true },
+    // ... more users
+  ];
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  return (
+    <div className="App">
+      <Leaderboard initialUsers={userData} />
+    </div>
+  );
+}
 
-### Code Splitting
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Component Structure
 
-### Analyzing the Bundle Size
+The project consists of these main files:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `Leaderboard.js` - Main component with the leaderboard logic
+- `Leaderboard.css` - Styling for the leaderboard
+- `index.js` - Entry point for the React application
 
-### Making a Progressive Web App
+## Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Styling
 
-### Advanced Configuration
+You can customize the appearance by modifying the `Leaderboard.css` file. The component uses Bootstrap classes in combination with custom CSS.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Configuration Options
 
-### Deployment
+The Leaderboard component accepts these props:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| initialUsers | Array | [] | Initial user data |
+| itemsPerPage | Number | 20 | Number of users per page |
+| showTopUsers | Boolean | true | Whether to display top 3 users separately |
+| defaultTab | String | 'daily' | Default active tab ('daily' or 'monthly') |
 
-### `npm run build` fails to minify
+## API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To connect this leaderboard to a real API:
+
+1. Create a data fetching function in the Leaderboard component:
+
+```jsx
+useEffect(() => {
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch('https://your-api-endpoint.com/users/rankings');
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error('Error fetching leaderboard data:', error);
+    }
+  };
+
+  fetchUsers();
+}, []);
+```
+
+2. Replace the mock data generation with this function.
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Android Chrome)
+
+## Dependencies
+
+- React 18+
+- Bootstrap 5+
+- React-Bootstrap
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Design inspired by modern gaming and social media leaderboards
+- Built with React and Bootstrap for reliable performance and responsive design
