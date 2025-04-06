@@ -1,0 +1,242 @@
+/* Leaderboard.css */
+.leaderboard-container {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navigation tabs */
+  .navigation-tabs {
+    border-bottom: 2px solid #f0f0f0;
+  }
+  
+  .nav-tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .nav-tab.active {
+    font-weight: bold;
+  }
+  
+  .nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ffcc00;
+  }
+  
+  /* Time period tabs */
+  .time-period-tabs {
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  
+  .time-tab {
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 25px;
+  }
+  
+  .time-tab.active {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Settlement banner */
+  .settlement-banner {
+    background: linear-gradient(135deg, #fff4d4 0%, #ffedb3 100%);
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .rewards-badge {
+    background-color: #ff6b00;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    position: absolute;
+    right: 10px;
+    font-size: 0.9em;
+  }
+  
+  /* Top users section */
+  .top-users-section {
+    position: relative;
+    padding-top: 40px;
+  }
+  
+  .winged-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><path d="M50 10 L90 30 L50 50 L10 30 Z" fill="gold"/><path d="M5 25 L40 10 L40 50 L5 35 Z" fill="white"/><path d="M95 25 L60 10 L60 50 L95 35 Z" fill="white"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .top-user-card {
+    text-align: center;
+    padding: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .position-1 {
+    background-color: #e8f4ff;
+    border: 1px solid #b0d8ff;
+  }
+  
+  .position-2 {
+    background-color: #fff9e8;
+    border: 1px solid #ffebb0;
+  }
+  
+  .position-3 {
+    background-color: #f9efe8;
+    border: 1px solid #e8cbb7;
+  }
+  
+  .crown-badge {
+    top: -10px;
+    right: 10px;
+  }
+  
+  .blue-crown {
+    color: #4a89dc;
+  }
+  
+  .gold-crown {
+    color: #f39c12;
+  }
+  
+  .bronze-crown {
+    color: #b7846d;
+  }
+  
+  .avatar-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .user-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .mystery-mask {
+    position: relative;
+  }
+  
+  .mask-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 C25 10, 10 35, 10 50 S25 90, 50 90 S90 65, 90 50 S75 10, 50 10 Z" fill="gold"/></svg>');
+    background-size: cover;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+  }
+  
+  .user-points {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  
+  .coin {
+    color: gold;
+  }
+  
+  /* Rank list */
+  .rank-list-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .rank-item {
+    transition: background-color 0.2s;
+  }
+  
+  .rank-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .rank-number {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+  }
+  
+  .rank-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .mystery-avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mask-small {
+    width: 30px;
+    height: 20px;
+    background-color: #e6b800;
+    border-radius: 10px;
+  }
+  
+  .coin-small {
+    font-size: 0.9em;
+    margin-right: 5px;
+  }
+  
+  /* Media queries */
+  @media (max-width: 768px) {
+    .user-name, .user-points {
+      font-size: 0.8em;
+    }
+    
+    .rank-number {
+      font-size: 1em;
+    }
+    
+    .rank-avatar, .mystery-avatar-small {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .mask-small {
+      width: 22px;
+      height: 15px;
+    }
+  }
